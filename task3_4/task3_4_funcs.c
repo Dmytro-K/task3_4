@@ -41,16 +41,13 @@ char *StrCat( char *dest, const char *src )
 	return dest;
 }
 
-void func( char* buffer, char num )
+void NumToWord( char* buffer, char num )
 {
 	char nums1[12][15] = { "one", "two", "three", "four", "five", "six",
 		"seven", "eight", "nine", "ten", "eleven", "twelve" };
 	char nums2[8][15] = { "twenty ", "thirty ", "forty ", "fifty ", "sixty ", "seventy ", "eighty ", "ninety "};
-	//char twenty[] = "twenty ";
-	char minus[] = "minus ";
-	//char *ptr;
+	//char minus[] = "minus ";
 	char decs;
-	//size_t len;
 
 
 	if( buffer == NULL )
@@ -65,53 +62,36 @@ void func( char* buffer, char num )
 		return;
 	}
 
-	//ptr = buffer;
-
 	if( num < 0 )
 	{
-		/*len = StrLen( minus );
-		memcpy( ptr, minus, minus );
-		ptr += len;*/
-		StrCat( buffer, minus );
+		StrCat( buffer, "minus " );
 	}
-
-	//if( num == 20 )
-	//{
-	//	StrCat( buffer, twenty );
-	//}
 
 	decs = num / 10;
 
 	if( num >= 20 )
 	{
-		/*len = StrLen( nums1[decs] );
-		memcpy( buffer, nums1[decs], len );
-		ptr += 1;*/
 		StrCat( buffer, nums2[decs-2] );
-		//StrCat( buffer, "ty " );
 		num %= 10;
 	}
 	else 
 	{
-		if( num == 0 ) {
+		if( num == 0 )
+		{
 			StrCat( buffer, "zero" );
 			return;
 		}
 	}
 
-	if( num < 20  )
+	if( (num < 20) && (num > 0) )
 	{
 		if( num <= 12 )
 		{
-			//memcpy( ptr, nums1[num], StrLen( nums1[num] ) );
 			StrCat( buffer, nums1[num-1] );
 		}
 		else
 		{
 			num -= 10;
-			/*len = StrLen( nums1[num] );
-			memcpy( ptr, nums1[num], len );
-			ptr += */
 			StrCat( buffer, nums1[num-1] );
 			StrCat( buffer, "teen " );
 		}

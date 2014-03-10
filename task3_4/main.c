@@ -13,7 +13,7 @@ int main( void )
 
 	for( i = 0; i < 14; i++ ) {
 		num = rand() % 100;
-		func( buffer, num );
+		NumToWord( buffer, num );
 		printf( "%4d :\t%s\n", num, buffer );
 	}
 	return 0;
